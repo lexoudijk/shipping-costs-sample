@@ -27,18 +27,16 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-
-
-    def makeWebhookResult(req):
-    if req.get("result").get("action") != "best.time":
+def makeWebhookResult(req):
+    if req.get("result").get("action") != "shipping.cost":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    location = parameters.get("attractions")
+    zone = parameters.get("shipping-zone")
 
-    time = {'British Museum':Monday, 'Tate Modern':11h, 'Big Ben':300, 'Tower Bridge':400, 'Shard':500}
+    cost = {'Europe':150, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
-    speech = "The best time to go to " + location + "is" + str(time[location]) +"."
+    speech = "It costs " + str(cost[zone]) + " euros to ship to" + zone.
 
     print("Response:")
     print(speech)
@@ -50,7 +48,6 @@ def webhook():
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }
-
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
