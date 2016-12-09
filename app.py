@@ -36,7 +36,29 @@ def makeWebhookResult(req):
 
     cost = {'Europe':150, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
-    speech = "It costs " + str(cost[zone]) + " euros." "to ship to" + zone
+    speech = "It costs " + str(cost[zone]) + " euros to ship to" + zone.
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        #"data": {},
+        # "contextOut": [],
+        "source": "apiai-onlinestore-shipping"
+    }
+
+    def makeWebhookResult(req):
+    if req.get("result").get("action") != "best.time":
+        return {}
+    result = req.get("result")
+    parameters = result.get("parameters")
+    location = parameters.get("attractions")
+
+    time = {'British Museum':Monday, 'Tate Modern':11h, 'Big Ben':300, 'Tower Bridge':400, 'Shard':500}
+
+    speech = "The best time to go to " + location + "is" + str(time[location]) +"."
 
     print("Response:")
     print(speech)
