@@ -34,9 +34,17 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     zone = parameters.get("shipping-zone")
 
-    cost = {'St Pauls':"Monday to Saturday before 9:30 AM or after 4 PM. The last entry to the cathedral is 4:15", 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    cost = {
+    'Food':"Pizza. Most definitely pizza. Too cold. Too hot. I don't care. There's no such thing as bad pizza. Except pineapple pizza", 
+    'Drink':"Westmalle Tripel. Fantastic Belgian beer. Non-alcoholic: good coffee. I mean good. Artisan and all. And fresh OJ", 
+    'Sports team':"Ajax Amsterdam", 
+    'Country':"My own, The Netherlands. The US, Canada and England aren't too bad either", 
+    'City':"Hard to choose, either London or San Francisco. Depends on the day and my mood I guess",
+    'Brand':"Nike. It has been cool for as long as I know. That is an amazin achievement. And the flagship store at Oxford Circus is awesome. Niketown, a must-visit",
+    'Restaurant':"McD..., uh no. Let's say Noma. Google it."
+    }
 
-    speech = "The best time to go to " + zone + " is " + str(cost[zone])
+    speech = "My favorite " + zone + " is " + str(cost[zone]) + "."
 
     print("Response:")
     print(speech)
